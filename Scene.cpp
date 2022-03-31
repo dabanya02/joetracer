@@ -147,9 +147,7 @@ Point Scene::debugColour(Point P, Vec w) const
 
 Point Scene::lightIn(const Point P, const Vec wi) const 
 {
-
     const std::shared_ptr<Surfel> &s = findFirstIntersection(P, wi);
-
     if (s != nullptr)
     {
         return lightOut(s, -wi);
