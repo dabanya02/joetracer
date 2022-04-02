@@ -34,10 +34,10 @@ void PinholeCamera::getPrimaryRay(float x, float y, int width, int height, Ray &
 
     Point origin = location;
 
-    Point lowerLeft = origin;
-    lowerLeft = math::sub(lowerLeft, math::point(math::scale(halfWidth, u)));
-    lowerLeft = math::sub(lowerLeft, math::point(math::scale(halfHeight, v)));
-    lowerLeft = math::sub(lowerLeft, math::point(w));
+    Point topLeft = origin;
+    topLeft = math::sub(topLeft, math::point(math::scale(halfWidth, u)));
+    topLeft = math::add(topLeft, math::point(math::scale(halfHeight, v)));
+    topLeft = math::sub(topLeft, math::point(w));
 
     Vec horizontal = math::scale(2 * halfWidth, u);
     Vec vertical = math::scale(2 * halfHeight, v);
@@ -46,8 +46,8 @@ void PinholeCamera::getPrimaryRay(float x, float y, int width, int height, Ray &
 
     Point xloc = math::point(math::scale(x, horizontal));
     Point yloc = math::point(math::scale(y, vertical));
-    Point loc = math::add(xloc, yloc);
-    r.direction = math::sub(math::add(lowerLeft, loc), origin).direction();
+    Point loc = math::sub(xloc, yloc);
+    r.direction = math::sub(math::add(topLeft, loc), origin).direction();
 }
 
 void PinholeCamera::changeLocation(Point p)

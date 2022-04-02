@@ -70,7 +70,7 @@ int main(int argc, char *args[])
     char *pixels = new char[SCREEN_WIDTH * SCREEN_HEIGHT * channels];
     float i = 45.0f;
 
-    PinholeCamera camera(-1.0f, 45.0f, Point(0, 0, 0), Point(0, 0, -1));
+    PinholeCamera camera(-1.0f, 90.0f, Point(0, 5, 5), Point(0, 0, -1));
     pixels = s->render(camera);
 
     SDL_Surface *surface = SDL_CreateRGBSurfaceFrom((void *)pixels,
